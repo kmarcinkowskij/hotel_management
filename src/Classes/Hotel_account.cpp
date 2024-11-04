@@ -1,3 +1,8 @@
+// Plik: Hotel_account.cpp
+// Autor: BŒ
+// Data: 04 listopada 2024
+// Opis: Implementacja klasy Hotel, która przechowuje dane dotycz¹ce hotelu.
+
 #include "Hotel_account.hpp"
 
 void Hotel_account::add_user(const std::shared_ptr<User_account>& _user)
