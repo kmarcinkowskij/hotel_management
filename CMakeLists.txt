@@ -3,4 +3,6 @@ project(hotel_management)
 
 set(CMAKE_CXX_STANDARD 26)
 
-add_executable(hotel_management src/main.cpp)
+add_executable(hotel_management src/main.cpp
+        src/Classes/Hotel_account.cpp
+        src/Classes/Hotel_account.hpp)

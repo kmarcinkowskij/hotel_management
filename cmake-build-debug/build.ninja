@@ -55,6 +55,12 @@ build CMakeFiles/hotel_management.dir/src/main.cpp.o: CXX_COMPILER__hotel_manage
   OBJECT_DIR = CMakeFiles/hotel_management.dir
   OBJECT_FILE_DIR = CMakeFiles/hotel_management.dir/src
 
+build CMakeFiles/hotel_management.dir/src/Classes/Hotel_account.cpp.o: CXX_COMPILER__hotel_management_unscanned_Debug /Users/konrad/Documents/projects/cpp/t/hotel_management/src/Classes/Hotel_account.cpp || cmake_object_order_depends_target_hotel_management
+  DEP_FILE = CMakeFiles/hotel_management.dir/src/Classes/Hotel_account.cpp.o.d
+  FLAGS = -g -std=gnu++2b -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/hotel_management.dir
+  OBJECT_FILE_DIR = CMakeFiles/hotel_management.dir/src/Classes
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target hotel_management
@@ -63,7 +69,7 @@ build CMakeFiles/hotel_management.dir/src/main.cpp.o: CXX_COMPILER__hotel_manage
 #############################################
 # Link the executable hotel_management
 
-build hotel_management: CXX_EXECUTABLE_LINKER__hotel_management_Debug CMakeFiles/hotel_management.dir/src/main.cpp.o
+build hotel_management: CXX_EXECUTABLE_LINKER__hotel_management_Debug CMakeFiles/hotel_management.dir/src/main.cpp.o CMakeFiles/hotel_management.dir/src/Classes/Hotel_account.cpp.o
   FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk
   OBJECT_DIR = CMakeFiles/hotel_management.dir
   POST_BUILD = :
