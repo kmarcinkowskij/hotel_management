@@ -28,7 +28,53 @@ public:
           chosen_services(_chosen_services) {
     }
 
+    [[nodiscard]] double get_accumulated_cost() const {
+        return accumulated_cost;
+    }
 
+    [[nodiscard]] time_t get_booked_in() const {
+        return booked_in;
+    }
+
+    [[nodiscard]] time_t get_booked_out() const {
+        return booked_out;
+    }
+
+    [[nodiscard]] unsigned int get_booked_nights() const {
+        return booked_nights;
+    }
+
+    [[nodiscard]] unsigned int get_user_booked_room_id() const {
+        return user_booked_room_id;
+    }
+
+    [[nodiscard]] std::vector<Service> get_chosen_services() const {
+        return chosen_services;
+    }
+
+    void set_accumulated_cost(const double &_accumulated_cost) {
+        this->accumulated_cost = _accumulated_cost;
+    }
+
+    void set_booked_in(const time_t &_booked_in) {
+        this->booked_in =_booked_in;
+    }
+
+    void set_booked_out(const time_t &_booked_out) {
+        this->booked_out = _booked_out;
+    }
+
+    void set_booked_nights(const unsigned int &_booked_nights) {
+        this->booked_nights = _booked_nights;
+    }
+
+    void set_user_booked_room_id(const unsigned int &_user_booked_room_id) {
+        this->user_booked_room_id = _user_booked_room_id;
+    }
+
+    void set_chosen_services(const std::vector<Service> &_chosen_services) {
+        this->chosen_services =_chosen_services;
+    }
 };
 
 
