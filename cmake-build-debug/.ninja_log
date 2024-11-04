@@ -1,0 +1,9 @@
+# ninja log v6
+21	110	1730707817507430702	CMakeFiles/hotel_management.dir/Hotel_account.cpp.o	f8ca136b308fb5bb
+110	250	1730707817596581177	hotel_management	8a7002d1bc9da5ec
+4	1648	1730707680162355612	CMakeFiles/hotel_management.dir/src/main.cpp.o	6d3409758d4a1f8d
+5	1667	1730707661735240868	CMakeFiles/hotel_management.dir/main.cpp.o	3dee70be3341885d
+8	161	1730707838040508511	build.ninja	5b5d03f87d899250
+4	130	1730707838040508511	build.ninja	5b5d03f87d899250
+18	109	1730707838078144423	CMakeFiles/hotel_management.dir/src/Classes/Hotel_account.cpp.o	3a4c79e42e9ee9cf
+109	245	1730707838169134238	hotel_management	f34104bd33da1fcb

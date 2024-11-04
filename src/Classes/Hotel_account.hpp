@@ -13,7 +13,7 @@ struct Room {
 };
 
 class Hotel_account {
-    std::array<std::tuple<Room, struct tm, struct tm>, 50>;
+    std::array<std::tuple<Room, struct tm, struct tm>, 50>; rooms;
 };
 
 
