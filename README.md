@@ -14,7 +14,3 @@
 
 **Przeznaczenie:**
 - Klasa `Amenities` reprezentuje pojedyncze udogodnienie dostępne w hotelu, przechowując jego identyfikator, nazwę, opis oraz cenę.
-
-### Interakcje między klasami
-
-W obecnym stanie projektu, klasa `Amenities` jest samodzielna i nie wchodzi w interakcje z innymi klasami. W przyszłości może być używana w innych klasach, takich jak `Hotel_account`, do zarządzania listą dostępnych udogodnień w hotelu.
