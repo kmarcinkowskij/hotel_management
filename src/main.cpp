@@ -1,25 +1,27 @@
 #include <iostream>
+#include <string_view>
 
-void Display_menu() {
-    std::cout << "<>-----MENU-----<>\n";
-    std::cout << "1. Book an apartment.\"n;
-    std::cout << "2. Cancel booking.\n";
-    std::cout << "3. Call service.\n";
-    std::cout << "4. Extend amenities.\n";
-    std::cout << "5. Exit.\n";
-    std::cout << "<>--------------<>\n";
-}
+std::string_view menu = 
+    "<>-----MENU-----<>\n"
+    "1. Book an apartment.\n"
+    "2. Cancel booking.\n"
+    "3. Call service.\n"
+    "4. Extend amenities.\n"
+    "5. Exit.\n"
+    "<>--------------<>\n";
 
 int main() {
-
-    Display_menu();
-    int chosen_option = 0;
-
-    std::cout << "Choose an option: ";
-    cin >> chosen_option;
-
+    std::cout << "Welcome to the X Hotel!\n"; // TODO: We still haven't thought of a name.
+    
     while(true) {
-        switch(chosen) {
+        std::cout << menu;
+    
+        unsigned int chosen_option = 0;
+    
+        std::cout << "Choose an option: ";
+        std::cin >> chosen_option;
+        
+        switch(chosen_option) {
         case 1:
         //Rezerwacja pokoju.
         /*
@@ -45,11 +47,11 @@ int main() {
         */
         break;
         case 5:
-            std::cout << "Exitting.\n";
+            std::cout << "Thank you for using our sevices.\n";
             return 0;
         break;
         default:
-            std::cout << "Chosen option does not exist!\n";
+            std::cout << "The option you selected does not exist. Please choose a valid option and try again.\n";
         break;
         }
     }
