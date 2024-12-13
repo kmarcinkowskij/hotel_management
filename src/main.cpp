@@ -6,8 +6,9 @@
 
 int main()
 {
-    App app;
-    app.run();
+    const auto app = new App();
+    app->run();
+    delete(app);
 
     return 0;
 }
