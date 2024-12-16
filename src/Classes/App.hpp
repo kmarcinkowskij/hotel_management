@@ -4,6 +4,7 @@
 
 #ifndef APP_HPP
 #define APP_HPP
+
 #include <iomanip>
 #include <memory>
 #include <sstream>
@@ -53,87 +54,87 @@ public:
 		};
 	}
 
-	/// Wyœwietla dostêpne pokoje w hotelu.
-	/// Funkcja pokazuje listê wszystkich dostêpnych pokoi, ich ceny i status dostêpnoœci.
+	/// WyÅ›wietla dostÄ™pne pokoje w hotelu.
+	/// Funkcja pokazuje listÄ™ wszystkich dostÄ™pnych pokoi, ich ceny i status dostÄ™pnoÅ›ci.
 	void display_rooms() const;
 
-	/// Wyœwietla dostêpne us³ugi oferowane przez hotel.
-	/// Funkcja pokazuje listê us³ug, ich opis oraz cenê.
+	/// WyÅ›wietla dostÄ™pne usÅ‚ugi oferowane przez hotel.
+	/// Funkcja pokazuje listÄ™ usÅ‚ug, ich opis oraz cenÄ™.
 	void display_services() const;
 
-	/// Wyœwietla dostêpne udogodnienia oferowane przez hotel.
-	/// Funkcja pokazuje listê dostêpnych udogodnieñ, ich opis oraz cenê.
+	/// WyÅ›wietla dostÄ™pne udogodnienia oferowane przez hotel.
+	/// Funkcja pokazuje listÄ™ dostÄ™pnych udogodnieÅ„, ich opis oraz cenÄ™.
 	void display_amenities() const;
 
-	/// Wyœwietla dane rezerwacji.
-	/// Funkcja pokazuje szczegó³y aktualnej rezerwacji, w tym wybrany pokój, us³ugi oraz udogodnienia.
+	/// WyÅ›wietla dane rezerwacji.
+	/// Funkcja pokazuje szczegÃ³Å‚y aktualnej rezerwacji, w tym wybrany pokÃ³j, usÅ‚ugi oraz udogodnienia.
 	void display_booking_data() const;
 
-	/// Wyœwietla g³ówne menu aplikacji.
-	/// Funkcja umo¿liwia u¿ytkownikowi wybór dostêpnych opcji w aplikacji.
+	/// WyÅ›wietla gÅ‚Ã³wne menu aplikacji.
+	/// Funkcja umoÅ¼liwia uÅ¼ytkownikowi wybÃ³r dostÄ™pnych opcji w aplikacji.
 	void display_main_menu();
 
-	/// Wyœwietla menu rezerwacji.
-	/// Funkcja pozwala u¿ytkownikowi na wybór pokoju, us³ug i udogodnieñ podczas rezerwacji.
+	/// WyÅ›wietla menu rezerwacji.
+	/// Funkcja pozwala uÅ¼ytkownikowi na wybÃ³r pokoju, usÅ‚ug i udogodnieÅ„ podczas rezerwacji.
 	void display_booking_menu();
 
-	/// Wybiera pokój na podstawie preferencji u¿ytkownika.
-	/// Funkcja umo¿liwia u¿ytkownikowi wybór pokoju z dostêpnej listy na podstawie jego preferencji.
-	/// @throws Wyrzuca wyj¹tek, jeœli nie ma dostêpnych pokoi.
+	/// Wybiera pokÃ³j na podstawie preferencji uÅ¼ytkownika.
+	/// Funkcja umoÅ¼liwia uÅ¼ytkownikowi wybÃ³r pokoju z dostÄ™pnej listy na podstawie jego preferencji.
+	/// @throws Wyrzuca wyjÄ…tek, jeÅ›li nie ma dostÄ™pnych pokoi.
 	void select_room() const;
 
-	/// Wybiera us³ugi dla rezerwacji na podstawie preferencji u¿ytkownika.
-	/// Funkcja pozwala u¿ytkownikowi na wybór dodatkowych us³ug do rezerwacji.
-	/// @throws Wyrzuca wyj¹tek, jeœli nie ma dostêpnych us³ug.
+	/// Wybiera usÅ‚ugi dla rezerwacji na podstawie preferencji uÅ¼ytkownika.
+	/// Funkcja pozwala uÅ¼ytkownikowi na wybÃ³r dodatkowych usÅ‚ug do rezerwacji.
+	/// @throws Wyrzuca wyjÄ…tek, jeÅ›li nie ma dostÄ™pnych usÅ‚ug.
 	void select_services() const;
 
-	/// Wybiera udogodnienia dla rezerwacji na podstawie preferencji u¿ytkownika.
-	/// Funkcja pozwala u¿ytkownikowi na wybór dodatkowych udogodnieñ do rezerwacji.
+	/// Wybiera udogodnienia dla rezerwacji na podstawie preferencji uÅ¼ytkownika.
+	/// Funkcja pozwala uÅ¼ytkownikowi na wybÃ³r dodatkowych udogodnieÅ„ do rezerwacji.
 	void select_amenities();
 
-	/// Oblicza ca³kowity koszt rezerwacji na podstawie wybranego pokoju, us³ug, udogodnieñ oraz liczby noclegów.
+	/// Oblicza caÅ‚kowity koszt rezerwacji na podstawie wybranego pokoju, usÅ‚ug, udogodnieÅ„ oraz liczby noclegÃ³w.
 	/// @param room_id Identyfikator wybranego pokoju.
-	/// @param chosen_services Lista wybranych us³ug.
-	/// @param chosen_amenities Lista wybranych udogodnieñ.
-	/// @param booked_nights Liczba noclegów.
-	/// @return Ca³kowity koszt rezerwacji.
+	/// @param chosen_services Lista wybranych usÅ‚ug.
+	/// @param chosen_amenities Lista wybranych udogodnieÅ„.
+	/// @param booked_nights Liczba noclegÃ³w.
+	/// @return CaÅ‚kowity koszt rezerwacji.
 	[[nodiscard]] double calculate_total_cost(unsigned int room_id, const std::vector<Service>& chosen_services,
 		const std::vector<Amenities>& chosen_amenities, int booked_nights) const;
 
-	/// Konwertuje datê w formacie string na czas typu time_t.
+	/// Konwertuje datÄ™ w formacie string na czas typu time_t.
 	/// @param date Data w formacie string (np. "2024-12-16").
 	/// @return Czas w formacie time_t.
 	static time_t convert_date_to_time(const std::string& date);
 
-	/// Konwertuje czas typu time_t na datê w formacie string.
+	/// Konwertuje czas typu time_t na datÄ™ w formacie string.
 	/// @param date Czas w formacie time_t.
 	/// @return Data w formacie string (np. "2024-12-16").
 	static std::string convert_time_to_date(const time_t& date);
 
-	/// Pobiera listê wybranych us³ug na podstawie wprowadzonego ci¹gu znaków.
-	/// @param selected_services Ci¹g znaków reprezentuj¹cy wybrane us³ugi.
-	/// @return Lista wybranych us³ug.
+	/// Pobiera listÄ™ wybranych usÅ‚ug na podstawie wprowadzonego ciÄ…gu znakÃ³w.
+	/// @param selected_services CiÄ…g znakÃ³w reprezentujÄ…cy wybrane usÅ‚ugi.
+	/// @return Lista wybranych usÅ‚ug.
 	[[nodiscard]] std::vector<Service> get_selected_services(const std::string& selected_services) const;
 
-	/// Pobiera listê wybranych udogodnieñ na podstawie wprowadzonego ci¹gu znaków.
-	/// @param selected_amenities Ci¹g znaków reprezentuj¹cy wybrane udogodnienia.
-	/// @return Lista wybranych udogodnieñ.
+	/// Pobiera listÄ™ wybranych udogodnieÅ„ na podstawie wprowadzonego ciÄ…gu znakÃ³w.
+	/// @param selected_amenities CiÄ…g znakÃ³w reprezentujÄ…cy wybrane udogodnienia.
+	/// @return Lista wybranych udogodnieÅ„.
 	std::vector<Amenities> get_selected_amenities(const std::string& selected_amenities) const;
 
-	/// Dodaje nowego u¿ytkownika do systemu.
-	/// @param new_user WskaŸnik na obiekt u¿ytkownika, który ma zostaæ dodany.
+	/// Dodaje nowego uÅ¼ytkownika do systemu.
+	/// @param new_user WskaÅºnik na obiekt uÅ¼ytkownika, ktÃ³ry ma zostaÄ‡ dodany.
 	void add_new_user(const std::shared_ptr<User_account>& new_user);
 
-	/// Dodaje now¹ rezerwacjê do systemu.
-	/// @param room_booking Krotka zawieraj¹ca identyfikator pokoju, daty pocz¹tkow¹ i koñcow¹ rezerwacji.
+	/// Dodaje nowÄ… rezerwacjÄ™ do systemu.
+	/// @param room_booking Krotka zawierajÄ…ca identyfikator pokoju, daty poczÄ…tkowÄ… i koÅ„cowÄ… rezerwacji.
 	void add_new_booking(std::tuple<unsigned int, time_t, time_t> room_booking);
 
-	/// Uruchamia aplikacjê.
-	/// Funkcja inicjuje interakcjê u¿ytkownika z aplikacj¹, w tym menu rezerwacji.
+	/// Uruchamia aplikacjÄ™.
+	/// Funkcja inicjuje interakcjÄ™ uÅ¼ytkownika z aplikacjÄ…, w tym menu rezerwacji.
 	void run();
 
-	/// Zapisuje bie¿¹c¹ rezerwacjê w systemie.
-	/// Funkcja zapisuje szczegó³y aktualnej rezerwacji, w tym dane pokoju, us³ug i udogodnieñ.
+	/// Zapisuje bieÅ¼Ä…cÄ… rezerwacjÄ™ w systemie.
+	/// Funkcja zapisuje szczegÃ³Å‚y aktualnej rezerwacji, w tym dane pokoju, usÅ‚ug i udogodnieÅ„.
 	void save_current_booking();
 };
 
