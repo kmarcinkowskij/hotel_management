@@ -7,9 +7,9 @@
 
 int main()
 {
-    const auto app = new App();
-    app->run();
-    delete(app);
+	const auto app = new App();
+	app->run();
+	delete(app);
 
-    return 0;
+	return 0;
 }
