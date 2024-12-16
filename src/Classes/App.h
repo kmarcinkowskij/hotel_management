@@ -11,7 +11,6 @@
 #include "Amenities.hpp"
 #include "Hotel_account.hpp"
 
-
 class App {
 private:
     std::vector<Room> available_rooms;
@@ -62,7 +61,6 @@ public:
 
     void display_booking_data() const;
 
-
     void display_main_menu();
 
     void display_booking_menu();
@@ -91,6 +89,5 @@ public:
 
     void save_current_booking();
 };
-
 
 #endif //APP_H
