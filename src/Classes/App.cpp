@@ -4,7 +4,6 @@
 
 #include "App.h"
 
-
 void App::display_rooms() const
 {
     std::cout << "Oto lista dostepnych pokoi: \n";
@@ -40,11 +39,14 @@ void App::display_booking_data() const
     for (const Service &service : new_user->get_chosen_services()) {
         std::cout << service.service_name << ", ";
     }
+    
     std::cout << "\n";
     std::cout << "Wybrane udogodnienia: ";
+    
     for (const Amenities &amenity : chosen_amenities) {
         std::cout << amenity.amenity_name << ", ";
     }
+    
     std::cout << "\n" << "\n";
 
     char answer = 'n';
@@ -65,7 +67,11 @@ void App::display_main_menu()
     switch(answer) {
     case 1:
         {
-            system("cls"); //Won't work on anything that does not run Windows, and will produce an ugly error;
+            #ifdef _WIN32
+	            system("cls");
+            #else
+	            std::cout << "\033[2J\033[H";
+            #endif
             select_room();
             display_booking_menu();
             break;
@@ -80,8 +86,6 @@ void App::display_main_menu()
             break;
         }
     }
-
-
 }
 
 void App::display_booking_menu()
@@ -99,7 +103,11 @@ void App::display_booking_menu()
         std::cout << "Co chcesz zrobic: ";
         std::cin >> answer;
 
-        system("cls"); //Won't work on anything but windows, and will produce an ugly error;
+        #ifdef _WIN32
+	        system("cls");
+        #else
+	        std::cout << "\033[2J\033[H";
+        #endif
 
         switch(answer) {
         case 1:
@@ -133,8 +141,13 @@ void App::display_booking_menu()
                 break;
             }
         }
-        system("cls"); //Won't work on anything but windows, and will produce an ugly error;
-    }while(answer != 5);
+        
+        #ifdef _WIN32
+	        system("cls");
+        #else
+	        std::cout << "\033[2J\033[H";
+        #endif
+    } while(answer != 5);
 
     std::cout << "Calkowity koszt pobytu: " << calculate_total_cost(new_user->get_user_booked_room_id(), new_user->get_chosen_services(), chosen_amenities, new_user->get_booked_nights()) << "zl" << "\n";
 }
@@ -142,8 +155,13 @@ void App::display_booking_menu()
 void App::select_room() const
 {
     int selected_room = -1;
-    do{
-        system("cls"); //Won't work on anything but windows, and will produce an ugly error;
+    do {
+        #ifdef _WIN32
+	        system("cls");
+        #else
+	        std::cout << "\033[2J\033[H";
+        #endif
+        
         display_rooms();
 
         if (selected_room != -1) {
@@ -154,7 +172,7 @@ void App::select_room() const
         std::cin >> selected_room;
         new_user->set_user_booked_room_id(selected_room);
 
-    }while(available_rooms[selected_room].is_vacant != true);
+    } while(available_rooms[selected_room].is_vacant != true);
 
     std::string booked_from;
     time_t date_converted_to_time = -1;
@@ -169,7 +187,7 @@ void App::select_room() const
             std::cout << "Podano date w zlym formacie.\n\t" << "exception: \t" << e.what() <<  "\n";
         }
 
-    }while(date_converted_to_time == -1);
+    } while(date_converted_to_time == -1);
 
     new_user->set_booked_in(date_converted_to_time);
 
@@ -179,7 +197,11 @@ void App::select_room() const
     new_user->set_booked_nights(nights_count);
     new_user->set_booked_out(new_user->get_booked_in() + nights_count * 864000);
 
-    system("cls"); //Won't work on anything but windows, and will produce an ugly error;
+    #ifdef _WIN32
+	    system("cls");
+    #else
+	    std::cout << "\033[2J\033[H";
+    #endif
 }
 
 void App::select_services() const
@@ -191,7 +213,11 @@ void App::select_services() const
     std::cin >> selected_services;
     new_user->set_chosen_services(get_selected_services(selected_services));
 
-    system("cls"); //Won't work on anything but windows, and will produce an ugly error;
+    #ifdef _WIN32
+	    system("cls");
+    #else
+	    std::cout << "\033[2J\033[H";
+    #endif
 }
 
 void App::select_amenities()
@@ -203,9 +229,6 @@ void App::select_amenities()
         std::cout << "Wybierz numery udogodnien (oddzielone przecinkiem): ";
         std::cin >> selected_amenities;
         chosen_amenities = get_selected_amenities(selected_amenities);
-
-        // system("cls"); //Won't work on anything but windows, and will produce an ugly error;
-
     }
 }
 
@@ -217,12 +240,14 @@ double App::calculate_total_cost(unsigned int room_id, const std::vector<Service
     for (const Service &service : chosen_services) {
         total_cost += service.price;
     }
+    
     for (const Amenities &amenity : chosen_amenities) {
         total_cost += amenity.amenity_price * booked_nights;
     }
 
     return total_cost;
 }
+
 time_t App::convert_date_to_time(const std::string& date)
 {
     std::tm tm = {};
@@ -242,10 +267,13 @@ time_t App::convert_date_to_time(const std::string& date)
 
 std::string App::convert_time_to_date(const time_t& date)
 {
-    std:tm* tm = std::localtime(&date);
+    std::tm tm;
+    if (std::localtime_r(&date, &tm) == nullptr) {
+        throw std::runtime_error("Nastapil blad podczas konwersji czasu.");
+    }
 
     std::stringstream oss;
-    oss << std::put_time(tm, "%Y-%m-%d");
+    oss << std::put_time(&tm, "%Y-%m-%d");
 
     return oss.str();
 }
@@ -297,7 +325,7 @@ void App::run()
     std::cout << "Witaj w naszym hotelu uzytkowniku!\n\n";
 
     char answer = 'n';
-    do{
+    do {
         display_main_menu();
 
         std::cout << "\nWrocic do menu (t/n): ";
@@ -306,8 +334,12 @@ void App::run()
             current_user_id += 1;
             new_user = std::make_shared<User_account>(current_user_id, 0.0, 0, 0, 0, -1, std::vector<Service>());
         }
-        system("cls"); //Won't work on anything but windows, and will produce an ugly error;
-    }while(answer == 't');
+        #ifdef _WIN32
+	        system("cls");
+        #else
+	        std::cout << "\033[2J\033[H";
+        #endif
+    } while(answer == 't');
 }
 
 void App::save_current_booking()
@@ -318,5 +350,3 @@ void App::save_current_booking()
     add_new_booking(std::tuple<unsigned int, time_t, time_t> (new_user->get_user_booked_room_id(), new_user->get_booked_in(), new_user->get_booked_out()));
     available_rooms[new_user->get_user_booked_room_id()].is_vacant = false;
 }
-
-
