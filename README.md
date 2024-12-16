@@ -84,3 +84,91 @@
 
 **Przeznaczenie:**
 - Klasa `Hotel_account` reprezentuje hotel, zarządzając kontami użytkowników, rezerwacjami pokoi oraz dostępnymi usługami. Oferuje metody do dodawania, usuwania i przeglądania rezerwacji oraz informacji o użytkownikach, co wspomaga bieżące zarządzanie hotelowymi operacjami.
+
+### class `App`
+
+**Atrybuty:**
+- `std::vector<Room> available_rooms` - wektor dostępnych pokoi w hotelu.
+- `std::vector<Service> available_services` - wektor dostępnych usług w hotelu.
+- `std::vector<Amenities> available_amenities` - wektor dostępnych udogodnień w hotelu.
+- `std::vector<Amenities> chosen_amenities` - wektor wybranych przez użytkownika udogodnień.
+- `std::shared_ptr<User_account> new_user` - wskaźnik do obiektu reprezentującego nowego użytkownika.
+- `unsigned int current_user_id` - identyfikator obecnego użytkownika.
+- `Hotel_account hotel_account` - obiekt klasy `Hotel_account`, zarządzający kontami użytkowników oraz rezerwacjami.
+
+**Metody:**
+
+- **display_rooms**:
+  - `void display_rooms() const`
+    - Wyświetla listę dostępnych pokoi wraz z informacjami o numerze pokoju, jego dostępności oraz cenie za noc.
+
+- **display_services**:
+  - `void display_services() const`
+    - Wyświetla listę dostępnych usług, w tym ich identyfikatory, nazwy, opisy oraz ceny.
+
+- **display_amenities**:
+  - `void display_amenities() const`
+    - Wyświetla listę dostępnych udogodnień, w tym ich identyfikatory, nazwy, opisy oraz ceny.
+
+- **display_booking_data**:
+  - `void display_booking_data() const`
+    - Wyświetla dane o bieżącej rezerwacji użytkownika, w tym numer pokoju, daty rezerwacji, liczbę nocy oraz wybrane usługi i udogodnienia.
+
+- **display_main_menu**:
+  - `void display_main_menu()`
+    - Wyświetla główne menu aplikacji, umożliwiając użytkownikowi wybór między rezerwacją pokoju a wyjściem.
+
+- **display_booking_menu**:
+  - `void display_booking_menu()`
+    - Wyświetla menu rezerwacji, pozwalające na zmianę pokoju, usług, udogodnień, przeglądanie danych rezerwacji oraz zakończenie rezerwacji.
+
+- **select_room**:
+  - `void select_room() const`
+    - Umożliwia użytkownikowi wybór pokoju z dostępnej listy. Sprawdza, czy pokój jest wolny, oraz zbiera dane dotyczące daty rezerwacji.
+
+- **select_services**:
+  - `void select_services() const`
+    - Umożliwia użytkownikowi wybór usług z dostępnej listy, na podstawie numerów usług oddzielonych przecinkiem.
+
+- **select_amenities**:
+  - `void select_amenities()`
+    - Umożliwia użytkownikowi wybór udogodnień z dostępnej listy, na podstawie numerów udogodnień oddzielonych przecinkiem.
+
+- **calculate_total_cost**:
+  - `double calculate_total_cost(unsigned int room_id, const std::vector<Service>& chosen_services, const std::vector<Amenities>& chosen_amenities, int booked_nights) const`
+    - Oblicza całkowity koszt rezerwacji na podstawie wybranego pokoju, usług, udogodnień oraz liczby nocy pobytu.
+
+- **convert_date_to_time**:
+  - `time_t convert_date_to_time(const std::string& date)`
+    - Konwertuje datę w formacie "YYYY-MM-DD" na wartość typu `time_t` (czas w sekundach).
+
+- **convert_time_to_date**:
+  - `std::string convert_time_to_date(const time_t& date)`
+    - Konwertuje czas w formacie `time_t` na datę w formacie "YYYY-MM-DD".
+
+- **get_selected_services**:
+  - `std::vector<Service> get_selected_services(const std::string& selected_services) const`
+    - Zwraca wektor wybranych usług na podstawie podanego ciągu znaków, zawierającego numery usług oddzielone przecinkami.
+
+- **get_selected_amenities**:
+  - `std::vector<Amenities> get_selected_amenities(const std::string& selected_amenities) const`
+    - Zwraca wektor wybranych udogodnień na podstawie podanego ciągu znaków, zawierającego numery udogodnień oddzielone przecinkami.
+
+- **add_new_user**:
+  - `void add_new_user(const std::shared_ptr<User_account>& new_user)`
+    - Dodaje nowe konto użytkownika do systemu.
+
+- **add_new_booking**:
+  - `void add_new_booking(std::tuple<unsigned int, time_t, time_t> room_booking)`
+    - Dodaje nową rezerwację pokoju do systemu.
+
+- **run**:
+  - `void run()`
+    - Uruchamia główną pętlę aplikacji, wyświetlając menu i pozwalając użytkownikowi na interakcję z aplikacją.
+
+- **save_current_booking**:
+  - `void save_current_booking()`
+    - Zapisuje bieżącą rezerwację, obliczając jej całkowity koszt oraz aktualizując dane użytkownika i rezerwacji w systemie.
+
+**Przeznaczenie:**
+- Klasa `App` reprezentuje główną logikę aplikacji hotelowej, umożliwiając użytkownikowi interakcję z systemem rezerwacji. Obsługuje menu aplikacji, wybór pokoi, usług, udogodnień oraz rejestrację rezerwacji. Dodatkowo, oblicza całkowity koszt pobytu oraz zapisuje dane użytkownika i rezerwacji.
