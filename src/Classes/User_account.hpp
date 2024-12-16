@@ -4,10 +4,11 @@
 
 #ifndef USER_ACCOUNT_HPP
 #define USER_ACCOUNT_HPP
+
 #include <ctime>
 #include <vector>
-#include "Service.hpp"
 
+#include "Service.hpp"
 
 class User_account {
 private:
@@ -82,7 +83,5 @@ public:
         this->chosen_services =_chosen_services;
     }
 };
-
-
 
 #endif //USER_ACCOUNT_HPP
