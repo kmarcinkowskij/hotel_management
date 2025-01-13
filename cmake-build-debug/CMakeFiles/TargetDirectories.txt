@@ -1,3 +1,3 @@
-/Users/konradmarcinkowski/CLionProjects/hotel_management/cmake-build-debug/CMakeFiles/hotel_management.dir
-/Users/konradmarcinkowski/CLionProjects/hotel_management/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/konradmarcinkowski/CLionProjects/hotel_management/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/lukaszstepien/2 - Areas/School/M09-OOP/hotel_management/cmake-build-debug/CMakeFiles/hotel_management.dir
+/Users/lukaszstepien/2 - Areas/School/M09-OOP/hotel_management/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/lukaszstepien/2 - Areas/School/M09-OOP/hotel_management/cmake-build-debug/CMakeFiles/rebuild_cache.dir
