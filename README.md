@@ -172,3 +172,7 @@
 
 **Przeznaczenie:**
 - Klasa `App` reprezentuje główną logikę aplikacji hotelowej, umożliwiając użytkownikowi interakcję z systemem rezerwacji. Obsługuje menu aplikacji, wybór pokoi, usług, udogodnień oraz rejestrację rezerwacji. Dodatkowo, oblicza całkowity koszt pobytu oraz zapisuje dane użytkownika i rezerwacji.
+
+
+### class `User_account`
+  Przechowuje dane użytkownika: Klasa zawiera prywatne zmienne członkowskie, które przechowują informacje takie jak unikalny identyfikator użytkownika (user_id), całkowity koszt naliczony przez użytkownika (accumulated_cost), czas zameldowania (booked_in), czas wymeldowania (booked_out), liczbę zarezerwowanych nocy (booked_nights), identyfikator zarezerwowanego pokoju (user_booked_room_id) oraz listę wybranych usług (chosen_services).
