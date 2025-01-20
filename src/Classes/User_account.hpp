@@ -20,6 +20,7 @@ private:
 	unsigned int user_booked_room_id;
 	std::vector<Service> chosen_services;
 public:
+	// Konstruktor inicjujący konto użytkownika z podanymi wartościami
 	User_account(const unsigned int &_user_id, const double &_accumulated_cost, const time_t &_booked_in, const time_t &_booked_out, const unsigned int &_booked_nights,
 		const unsigned int &_user_booked_room_id, const std::vector<Service> &_chosen_services)
 		: user_id(_user_id),
@@ -30,7 +31,7 @@ public:
 		  user_booked_room_id(_user_booked_room_id),
 		  chosen_services(_chosen_services) {
 	}
-
+	//gettery dla prywatnych zmiennych 
 	[[nodiscard]] unsigned int get_user_id() const {
 		return user_id;
 	}
@@ -59,6 +60,7 @@ public:
 		return chosen_services;
 	}
 
+	//settery dla prywatnych zmiennych członkowskich
 	void set_accumulated_cost(const double &_accumulated_cost) {
 		this->accumulated_cost = _accumulated_cost;
 	}
