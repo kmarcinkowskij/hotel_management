@@ -1,7 +1,7 @@
 // Plik: Hotel_account.hpp
-// Autor: BŒ
+// Autor: Konrad Marcinkowski 
 // Data: 04 listopada 2024
-// Opis: Definicja klasy Hotel, która przechowuje dane dotycz¹ce hotelu.
+// Opis: Definicja klasy Hotel, ktÃ³ra przechowuje dane dotyczÂ¹ce hotelu.
 
 #ifndef HOTEL_ACCOUNT_HPP
 #define HOTEL_ACCOUNT_HPP
@@ -34,46 +34,46 @@ public:
 		services[4] = std::make_shared<Service>(5, "Lorem", "Impsum5", 5.0);
 	}
 
-	/// Dodaje u¿ytkownika do listy kont u¿ytkowników.
-	/// @param _user WskaŸnik na obiekt typu User_account, który ma zostaæ dodany do listy kont u¿ytkowników.
+	/// Dodaje uÂ¿ytkownika do listy kont uÂ¿ytkownikÃ³w.
+	/// @param _user WskaÅ¸nik na obiekt typu User_account, ktÃ³ry ma zostaÃ¦ dodany do listy kont uÂ¿ytkownikÃ³w.
 	void add_user(const std::shared_ptr<User_account>& _user)
 	{
 		user_accounts.push_back(_user);
 	}
 
-	/// Tworzy nowego u¿ytkownika i dodaje go do listy kont u¿ytkowników.
-	/// @param _user_id Unikalny identyfikator u¿ytkownika.
-	/// @param _accumulated_cost Skumulowany koszt pobytu u¿ytkownika.
-	/// @param _booked_in Czas zameldowania u¿ytkownika.
-	/// @param _booked_out Czas wymeldowania u¿ytkownika.
-	/// @param _booked_nights Liczba zarezerwowanych nocy przez u¿ytkownika.
-	/// @param _user_booked_room_id Identyfikator pokoju zarezerwowanego przez u¿ytkownika.
-	/// @param _chosen_services Wektor wybranych us³ug przez u¿ytkownika.
+	/// Tworzy nowego uÂ¿ytkownika i dodaje go do listy kont uÂ¿ytkownikÃ³w.
+	/// @param _user_id Unikalny identyfikator uÂ¿ytkownika.
+	/// @param _accumulated_cost Skumulowany koszt pobytu uÂ¿ytkownika.
+	/// @param _booked_in Czas zameldowania uÂ¿ytkownika.
+	/// @param _booked_out Czas wymeldowania uÂ¿ytkownika.
+	/// @param _booked_nights Liczba zarezerwowanych nocy przez uÂ¿ytkownika.
+	/// @param _user_booked_room_id Identyfikator pokoju zarezerwowanego przez uÂ¿ytkownika.
+	/// @param _chosen_services Wektor wybranych usÂ³ug przez uÂ¿ytkownika.
 	void add_user(const unsigned int& _user_id, const double& _accumulated_cost, const time_t& _booked_in, const time_t& _booked_out, const unsigned int& _booked_nights, const unsigned int& _user_booked_room_id, const std::vector<Service>& _chosen_services)
 	{
 		user_accounts.emplace_back(std::make_shared<User_account>(_user_id, _accumulated_cost, _booked_in, _booked_out,
 			_booked_nights, _user_booked_room_id, _chosen_services));
 	}
 
-	/// Dodaje rezerwacjê pokoju do listy rezerwacji.
-	/// @param _room_booking Krotka zawieraj¹ca informacje o pokoju, dacie rozpoczêcia i zakoñczenia rezerwacji.
+	/// Dodaje rezerwacjÃª pokoju do listy rezerwacji.
+	/// @param _room_booking Krotka zawierajÂ¹ca informacje o pokoju, dacie rozpoczÃªcia i zakoÃ±czenia rezerwacji.
 	void add_booking(const std::tuple<Room, time_t, time_t>& _room_booking)
 	{
 		room_bookings.push_back(_room_booking);
 	}
 
-	/// Tworzy rezerwacjê pokoju i dodaje j¹ do listy rezerwacji.
-	/// @param _room Obiekt typu Room reprezentuj¹cy rezerwowany pokój.
-	/// @param _booked_from Data rozpoczêcia rezerwacji.
-	/// @param _booked_to Data zakoñczenia rezerwacji.
+	/// Tworzy rezerwacjÃª pokoju i dodaje jÂ¹ do listy rezerwacji.
+	/// @param _room Obiekt typu Room reprezentujÂ¹cy rezerwowany pokÃ³j.
+	/// @param _booked_from Data rozpoczÃªcia rezerwacji.
+	/// @param _booked_to Data zakoÃ±czenia rezerwacji.
 	void add_booking(const Room& _room, const time_t& _booked_from, const time_t& _booked_to)
 	{
 		room_bookings.emplace_back(_room, _booked_from, _booked_to);
 	}
 
-	/// Usuwa rezerwacjê pokoju na podstawie jego identyfikatora.
-	/// @param _room_id Identyfikator pokoju, którego rezerwacja ma zostaæ usuniêta.
-	/// @throws Wyrzuca wyj¹tek, jeœli rezerwacja dla podanego identyfikatora pokoju nie istnieje.
+	/// Usuwa rezerwacjÃª pokoju na podstawie jego identyfikatora.
+	/// @param _room_id Identyfikator pokoju, ktÃ³rego rezerwacja ma zostaÃ¦ usuniÃªta.
+	/// @throws Wyrzuca wyjÂ¹tek, jeÅ“li rezerwacja dla podanego identyfikatora pokoju nie istnieje.
 	void remove_booking(const unsigned int& _room_id)
 	{
 		auto iter = std::find_if(room_bookings.begin(), room_bookings.end(), [&](const std::tuple<Room, time_t, time_t>& _current) {
@@ -88,9 +88,9 @@ public:
 		room_bookings.erase(iter);
 	}
 
-	/// Usuwa u¿ytkownika z listy kont na podstawie jego identyfikatora.
-	/// @param _user_id Identyfikator u¿ytkownika, którego konto ma zostaæ usuniête.
-	/// @throws Wyrzuca wyj¹tek, jeœli u¿ytkownik o podanym identyfikatorze nie istnieje.
+	/// Usuwa uÂ¿ytkownika z listy kont na podstawie jego identyfikatora.
+	/// @param _user_id Identyfikator uÂ¿ytkownika, ktÃ³rego konto ma zostaÃ¦ usuniÃªte.
+	/// @throws Wyrzuca wyjÂ¹tek, jeÅ“li uÂ¿ytkownik o podanym identyfikatorze nie istnieje.
 	void remove_user(const unsigned int& _user_id)
 	{
 		auto iter = std::find_if(user_accounts.begin(), user_accounts.end(), [&](const std::shared_ptr<User_account>& _user) {
